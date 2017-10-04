@@ -13,7 +13,7 @@ include 'mytemplate-engine.php';
 
 
 $names[] = [
-	'name' => 'ahmed',
+	'name' => 'Mohamed Endisha',
 	'href' => 'http://developer.ly',
 ];
 

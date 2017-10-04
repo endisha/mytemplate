@@ -1,8 +1,10 @@
 # MyTemplate Engine 1.3.2 
 
 Authors:
-[Founder] : Mohamed Endisha 
-[Develoepr] : saanina
+
+- Founder : Mohamed Endisha 
+
+- Develoepr : saanina
 
 ```
 <?php

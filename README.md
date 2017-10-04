@@ -1,10 +1,11 @@
 # MyTemplate Engine 1.3.2 
+PHP Template Engine
 
 Authors:
 
-- Founder : Mohamed Endisha 
+- Founder : Mohamed Endisha , mohamed.endisha@gmail.com
 
-- Develoepr : saanina
+- Developer : saanina , saanina@gmail.com 
 
 ```
 <?php

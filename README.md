@@ -1,8 +1,8 @@
 # MyTemplate Engine 1.3.2 
-Author[Founder] : Mohamed Endisha 
-Author[Develoepr] : saanina
 
-
+Authors:
+[Founder] : Mohamed Endisha 
+[Develoepr] : saanina
 
 
 <?php
@@ -28,6 +28,4 @@ echo $mytpl->show('index');
 ?>
 
 
-## Copyrights 2007 - 2017
--Bruce ->  Mytemplate engine founder
--Saanina -> Mytemplate engine developers
+###### Copyrights 2007 - 2017 Bruce & Saanina

@@ -6,7 +6,9 @@
 *  		2- Saanina [develper] http://moffed.com ||  saanina@gmail.com 
 *  
 *###############################################
+*   last change  reconstruct class 2017/10/04
 *   last change  was : 10:16 pm 2008/2/17
+*
 *   last edit by : Bruce..
 *	fix when print global value inside loop
 *	add assets js & css files
@@ -25,10 +27,8 @@ class MyTemplate{
    private $vars		= array();
    
    function __construct(){
-
   		 $this->Tempdir = __DIR__ . '/' . $this->Tempdir . '/';
   		 $this->cachedir = __DIR__ . '/' . $this->cachedir . '/'; 
-
    }
 
 	/**
@@ -54,7 +54,7 @@ class MyTemplate{
 	* accses : private..
 	*/
 	
-    function compile($content) {  //was display function here
+    private function compile($content) {  //was display function here
 	
 			//loop 
 			$content = preg_replace_callback('#{loop[^>]([a-zA-Z0-9\_\-\+\./]+)(.*?)\}(.*?){\/loop\}#is',array(&$this,'loop_bt'), $content);
@@ -100,12 +100,12 @@ class MyTemplate{
 	* we have 2 type , singal or array ..
 	* access : public ..
 	**/
-	function assign($name, $value){
+	public function assign($name, $value){
 		$this->vars[$name] = $value; 
 	}
 	
 	//for array
-    function assign_r($array){ 
+    public function assign_r($array){ 
     	foreach($array as $key=>$value){
     		$this->assign($key, $value); 
     	} 
@@ -119,7 +119,7 @@ class MyTemplate{
 	* we make this method to make your template more limited , just variables which you make it ..
 	* access : private ..
 	**/
-	function assign_if_global_off($match){
+	private function assign_if_global_off($match){
 
 		if(isset($this->vars[trim($match[1])])){
 			return '<?php print $this->vars[\'' . $match[1] . '\'];?>';
@@ -133,7 +133,7 @@ class MyTemplate{
 	*including another template in current one ,,, its prety and helpful .. ;)
 	* access : public ..
 	*/
-	function include_tpl($tpl_page){
+	private function include_tpl($tpl_page){
 	
 		print $this->show($tpl_page);
 	}
@@ -142,7 +142,7 @@ class MyTemplate{
 	*this is the father of template engine ,, i dont why i love play with it , its like my little kid :)
 	* access : private ..
 	**/
-	function loop_bt ($match_loop) { 
+	private function loop_bt ($match_loop) { 
 	
 			//matchs ..
 			$matchs = array('#{odd[^>]([a-zA-Z0-9\_\-\+\./]+)\}(.*?){\/odd\}#is',
@@ -172,7 +172,7 @@ class MyTemplate{
 	for if / elseif experssions ,, 
 	acsess : private ..
 	*/
-	function if_expr(&$match) {
+	private function if_expr(&$match) {
 	
 
 		//if it's IF .. 
@@ -288,7 +288,7 @@ class MyTemplate{
 	* access : public ..
 	**/
 	
-    function show($content, $name_c='', $cache_time = false){ 
+    public function show($content, $name_c='', $cache_time = false){ 
 	
 		//at first .. 
 		$page_is	= ($name_c!='') ? $name_c :  $content;

@@ -1,44 +1,25 @@
 <?php
 
-/* ÊÚÑíÝ ÇáßáÇÓ */
-############################################################
-include_once 'mytemplate-engine.php';
-	$TPL   = new Mytemplate();
-	$TPL->cachedir    = 'cache/'; //ãáÝ ÇáßÇÔ
-	$TPL->cachetime   =  0; //æÞÊ ÈÞÇÁ ÇáãáÝÇÊ
-	$TPL->php_compile = 'on'; //ÇáÓãÇÍ ÈÇÓÊÎÏÇã ÇßæÇÏ ÇáÈí ÇÊÔ Èí ÎÇÑÌ ÇáßæÏ ÇáãÍÏÏ
-	$TPL->global_vars = 'off'; //ÊÚØíá ÇáÌáæÈÇá æÇÓÊÎÏÇã ÇáÇÓÇíä
-	$TPL->Tempdir     = 'tpl/'; //ãáÝ ÇáÞæÇáÈ
-############################################################
+include 'mytemplate-engine.php';
 
-/* ÈÚÖ ÇáÏæÇá */
-#############################################################
-# LOOP in php #
-	$loop   = mysql_query("SELECT * From `table`")or die(mysql_error());
-	while($rows  = mysql_fetch_array($loop)){
-		$row[] = $rows;
-	}
-# LOOP in template #
-	{loop row}
-	 {title}
-	{/loop}
-#############################################################
-# assign_r in php #
-	$rows =  mysql_fetch_array($sql); 
-	$TPL->assign_r($rows);
-# assign_r in php #
-	{title}
-ÈÏæä ÇÓã ÇáãÕÝæÝÉ
-##############################################################
-# show template #
-echo $TPL->show('post_body.tpl');
-#or #
-print $TPL->show('post_body.tpl');
-#or #
-$x = $TPL->show('post_body.tpl');
-print $x;
-Çæ ÈÇÓÊÎÏÇã æÞÊ ááÞÇáÈ ãÍÏÏ
-echo $TPL->show('post_body.tpl' , 2); //ÓÇÚÊíä
-##############################################################
+	$mytpl = new MyTemplate();
+
+	$mytpl->app_dir    = 'http://localhost/your-app';
+	$mytpl->cachetime   =  0; 
+	$mytpl->php_compile = 'on'; 
+	$mytpl->global_vars = 'off'; 
+	$mytpl->Tempdir     = 'tpl/';
+	$mytpl->cache     = 'cache/';
+
+$names[] = [
+	'name' => 'Mohamed Endisha',
+	'href' => 'http://developer.ly',
+];
+
+$mytpl->assign('title', 'Application title');
+$mytpl->assign_r($names);
+echo $mytpl->show('index');
+
+## Copyrights 2007 - 2017
 -Bruce ->  Mytemplate engine founder
 -Saanina -> Mytemplate engine developers
